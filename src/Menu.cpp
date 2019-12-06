@@ -459,20 +459,21 @@ void Menu::exibirMenu()
 		    cout<<endl<<"----METRICAS ARVORE VP--"<<endl;
 
             	    saida<<"----METRICAS ARVORE VP--"<<endl;
-		    saida<<endl<<endl;
-                    saida<<" N = " << vetN[k] << ": "<<endl;
-                    saida<<"*     METRICAS        *         Arvore VP       *" <<endl;
-		    saida<<"*************************************************"<<endl;
-                    saida<<"*     COMPARACOESS    *"<< "\t\t" << arvore->getComparacoesIns() << "\t\t*" <<endl;
-                    saida<<"*     TROCAS          *"<< "\t\t" << arvore->getTrocasIns() <<"\t\t*"<<endl;
+		    for(int cont=0; cont<5 ; cont++){
+		    	saida<<endl<<endl;
+                    	saida<<" N = " << vetN[k] << ": "<<endl;
+                    	saida<<"*     METRICAS        *         Arvore VP       *" <<endl;
+		   	saida<<"*************************************************"<<endl;
+                    	saida<<"*     COMPARACOESS    *"<< "\t\t" << arvore->getComparacoesIns() << "\t\t*" <<endl;
+                    	saida<<"*     TROCAS          *"<< "\t\t" << arvore->getTrocasIns() <<"\t\t*"<<endl;
 
-		    cout<<endl<<endl;
- 	            cout<<" N = " << vetN[k] << ": "<<endl;
-                    cout<<"*     METRICAS        *         Arvore VP       *" <<endl;
-		    cout<<"*************************************************"<<endl;
-                    cout<<"*     COMPARACOESS    *"<< "\t\t" << arvore->getComparacoesIns() << "\t\t*" <<endl;
-                    cout<<"*     TROCAS          *"<< "\t\t" << arvore->getTrocasIns() <<"\t\t*"<<endl;
-		   
+                    	cout<<endl<<endl;
+                    	cout<<" N = " << vetN[k] << ": "<<endl;
+                    	cout<<"*     METRICAS        *         Arvore VP       *" <<endl;
+		    	cout<<"*************************************************"<<endl;
+                    	cout<<"*     COMPARACOESS    *"<< "\t\t" << arvore->getComparacoesIns() << "\t\t*" <<endl;
+                    	cout<<"*     TROCAS          *"<< "\t\t" << arvore->getTrocasIns() <<"\t\t*"<<endl;
+		   }
                    arvore = new ArvoreVP();
             	}
                 break;
@@ -481,7 +482,7 @@ void Menu::exibirMenu()
 
             case 4: ///Cenario 4
             {
-/*		int numeroN = 0; //armazena o número de N's do arquivo
+		int numeroN = 0; //armazena o número de N's do arquivo
                 ifstream infile ("entradaArv.txt");
                 int i=0;
                 while(infile){
@@ -506,7 +507,7 @@ void Menu::exibirMenu()
                     i++;
                 }
                 infile.close();
-                std::ofstream saida ("saidaVP.txt");
+                std::ofstream saida ("saidaB.txt");
                 vector<registro> lista;
                 vector<registro>::iterator it;
 
@@ -517,8 +518,11 @@ void Menu::exibirMenu()
                 for(int k=0; k<numeroN; k++){
                     saida<<"k = "<<k<<endl;
                     leitura(lista,vetN[k]);
+		    cout<<"sai da leitura"<<endl;
                     for(it = lista.begin(); it != lista.end(); ++it){
+			cout<<"vou inserir "<<it->getId()<<endl;
                         arv->Inserir(*it);
+			cout<<"inserido "<< it->getId()<<endl;
                     }
                     lista.clear();
 
@@ -530,21 +534,21 @@ void Menu::exibirMenu()
                         saida<<" N = " << vetN[k] << ": "<<endl;
                         saida<<"*     METRICAS        *     Arvore B (d = 2)   *" <<endl;
                         saida<<"*************************************************"<<endl;
-                        saida<<"*     COMPARACOESS    *"<< "\t\t" << arv->getComparacoesIns() << "\t\t*" <<endl;
-                        saida<<"*     TROCAS          *"<< "\t\t" << arv->getTrocasIns() <<"\t\t*"<<endl;
+                        saida<<"*     COMPARACOESS    *"<< "\t\t" << arv->getComparacoes() << "\t\t*" <<endl;
+                        saida<<"*     TROCAS          *"<< "\t\t" << arv->getTrocas() <<"\t\t*"<<endl;
 
                         cout<<endl<<endl;
                         cout<<" N = " << vetN[k] << ": "<<endl;
                         cout<<"*     METRICAS        *     Arvore B (d = 2)   *" <<endl;
                         cout<<"*************************************************"<<endl;
-                        cout<<"*     COMPARACOESS    *"<< "\t\t" << arv->getComparacoesIns() << "\t\t*" <<endl;
-                        cout<<"*     TROCAS          *"<< "\t\t" << arv->getTrocasIns() <<"\t\t*"<<endl;
+                        cout<<"*     COMPARACOESS    *"<< "\t\t" << arv->getComparacoes() << "\t\t*" <<endl;
+                        cout<<"*     TROCAS          *"<< "\t\t" << arv->getTrocas() <<"\t\t*"<<endl;
                    }
-                   arv = new ArvoreB();
+                   arv = new ArvoreB(2);
                 }
                 break;
-                saida.close();*/
-		    cout<<"Erro na implementacao"<<endl;
+                saida.close();
+		//    cout<<"Erro na implementacao"<<endl;
             }
 
             case 0:
