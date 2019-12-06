@@ -5,22 +5,25 @@
 
 class ArvoreB
 {
-public:
-    ArvoreB(int d);
-    ~ArvoreB();
+    public:
+    	ArvoreB(int d);
+    	~ArvoreB();
 
-    //Funções
-    void Inserir(registro *registro);
-    bool Buscar(registro *registro);
-    bool Buscar(registro *registro, NoB **pt, int *posicaoChave);
-    void Cisao(registro *registro, NoB **pt, int posicaoChave, NoB *outroNo);
-    void inserirNaoCheio(registro *registro, NoB **pt, int posicaoChave);
-    int Inserir(registro *registro, NoB **pt);
+    	//Funções
+    	void Inserir(registro &registro);
+    	bool Buscar(registro *registro);
+   	bool Buscar(registro *registro, NoB **pt, int *posicaoChave);
+    	void Cisao(registro *registro, NoB **pt, int posicaoChave, NoB *outroNo);
+    	void inserirNaoCheio(registro *registro, NoB **pt, int posicaoChave);
+    	int BInserir(registro *reg, NoB **pt);
+	int getComparacoes();
+	int getTrocas();
 
-private:
-    NoB *raiz;
-    int d;
-
+    private:
+	int comp;
+	int trocas;
+    	NoB *raiz;
+    	int d;
 
 };
 

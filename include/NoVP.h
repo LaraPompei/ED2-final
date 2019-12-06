@@ -9,24 +9,21 @@ using namespace std;
 enum Cor{VERMELHO,PRETO};
 class NoVP
 {
-public:
-    //NoVP(int valor);
-    //NoVP();
-    NoVP ();
-    NoVP (registro *reg);
-    NoVP (int a);
-    ~NoVP();
-    bool cor; //0 = preto; 1 = vermelho
-    int valor;
-    registro *reg;
-    NoVP *esquerda, *direita, *pai;
-    string getUser();
-    int getGameId();
+    public:
+    	NoVP ();
+    	NoVP (registro *reg);
+    	NoVP (int a);
+    	~NoVP();
 
-    //int getMovieId();
-    //int getUserId();
+    	bool cor; //0 = preto; 1 = vermelho
+    	int valor;
+    	registro *reg;
+    	NoVP *esquerda, *direita, *pai;
+    	string getUser();
+    	int getGameId();
 
-private:
+
+   private:
 
 
 };
