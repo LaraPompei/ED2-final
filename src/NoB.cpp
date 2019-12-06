@@ -1,6 +1,15 @@
 #include "NoB.h"
 #include <iostream>
 
+/*
+ ***********************************************************************************
+ *                                                                                 *
+ * construtor armazena a ordem da arvore em d e aloca dinamicamente vetores para   *
+ * armazenar os registros presentes naquele noh de tamanho 2*d, e tb o vetor dos   *
+ * filhos desse noh, de tamanho 2*d + 1                                            *
+ *                                                                                 *
+ ***********************************************************************************
+ */
 NoB::NoB(int d)
 {
     this->d = d;
@@ -11,8 +20,8 @@ NoB::NoB(int d)
         registros[i] = NULL;
     }
     filhos[2*d] = NULL;
-    this->folha = true;
-    this->pai = NULL;
+    this->folha = true; //todo noh eh criado como folha
+    this->pai = NULL; //todo noh eh criado como raiz de uma arvore
     numeroChaves = 0;
 }
 
