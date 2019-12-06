@@ -1,0 +1,108 @@
+# depslib dependency file v1.0
+1575161640 source:c:\users\camil\desktop\esd2-master\main.cpp
+	<iostream>
+	<iterator>
+	<vector>
+	<bits/stdc++.h>
+	<stdlib.h>
+	<fstream>
+	"registro.h"
+	"LZW.h"
+	"huffman.h"
+	"noHuff.h"
+	"Menu.h"
+
+1575161640 c:\users\camil\desktop\esd2-master\include\registro.h
+	<iostream>
+	<string.h>
+
+1575161640 c:\users\camil\desktop\esd2-master\include\lzw.h
+	<vector>
+	<bits/stdc++.h>
+	<string>
+
+1575161640 c:\users\camil\desktop\esd2-master\include\huffman.h
+	"noHuff.h"
+	<iostream>
+	<string>
+	<queue>
+	<unordered_map>
+	<vector>
+
+1575161640 c:\users\camil\desktop\esd2-master\include\nohuff.h
+
+1575161640 c:\users\camil\desktop\esd2-master\include\menu.h
+	"registro.h"
+	<bits/stdc++.h>
+	<list>
+	<iterator>
+	<vector>
+
+1575161640 source:c:\users\camil\desktop\esd2-master\src\huffman.cpp
+	"huffman.h"
+	"noHuff.h"
+	<iostream>
+	<queue>
+	<unordered_map>
+	<vector>
+
+1575161640 source:c:\users\camil\desktop\esd2-master\src\lzw.cpp
+	"LZW.h"
+	<vector>
+	<bits/stdc++.h>
+	<string>
+
+1575161640 source:c:\users\camil\desktop\esd2-master\src\nohuff.cpp
+	"noHuff.h"
+	<stdio.h>
+	<iostream>
+
+1575161640 source:c:\users\camil\desktop\esd2-master\src\novp.cpp
+	"NoVP.h"
+	<iostream>
+	"registro.h"
+
+1575161640 c:\users\camil\desktop\esd2-master\include\novp.h
+	"registro.h"
+	"Menu.h"
+
+1575161640 source:c:\users\camil\desktop\esd2-master\src\registro.cpp
+	<stdlib.h>
+	"registro.h"
+
+1575170882 source:c:\users\camil\desktop\esd2-master\src\arvorevp.cpp
+	<iostream>
+	"ArvoreVP.h"
+	"NoVP.h"
+	<bits/stdc++.h>
+
+1575161918 c:\users\camil\desktop\esd2-master\include\arvorevp.h
+	"NoVP.h"
+
+1575173974 source:c:\users\camil\desktop\esd2-master\src\menu.cpp
+	"Menu.h"
+	<bits/stdc++.h>
+	<iostream>
+	"LZW.h"
+	<stdlib.h>
+	<fstream>
+	<vector>
+	"huffman.h"
+	"ArvoreVP.h"
+	"NoVP.h"
+
+1575173894 source:c:\users\camil\desktop\esd2-master\nob.cpp
+	"NoB.h"
+	<iostream>
+
+1575173665 c:\users\camil\desktop\esd2-master\nob.h
+	"registro.h"
+
+1575173934 source:c:\users\camil\desktop\esd2-master\arvoreb.cpp
+	"ArvoreB.h"
+	<iostream>
+
+1575173676 c:\users\camil\desktop\esd2-master\arvoreb.h
+	"NoB.h"
+	"Registro.h"
+

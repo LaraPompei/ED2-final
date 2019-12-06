@@ -1,0 +1,45 @@
+k = 0
+----METRICAS ARVORE VP--
+
+
+ N = 5000: 
+*     METRICAS        *         Arvore VP       *
+*************************************************
+*     COMPARACOESS    *		356829		*
+*     TROCAS          *		4978		*
+k = 1
+----METRICAS ARVORE VP--
+
+
+ N = 1000: 
+*     METRICAS        *         Arvore VP       *
+*************************************************
+*     COMPARACOESS    *		57194		*
+*     TROCAS          *		983		*
+k = 2
+----METRICAS ARVORE VP--
+
+
+ N = 50000: 
+*     METRICAS        *         Arvore VP       *
+*************************************************
+*     COMPARACOESS    *		0		*
+*     TROCAS          *		0		*
+k = 3
+----METRICAS ARVORE VP--
+
+
+ N = 100000: 
+*     METRICAS        *         Arvore VP       *
+*************************************************
+*     COMPARACOESS    *		0		*
+*     TROCAS          *		0		*
+k = 4
+----METRICAS ARVORE VP--
+
+
+ N = 500000: 
+*     METRICAS        *         Arvore VP       *
+*************************************************
+*     COMPARACOESS    *		0		*
+*     TROCAS          *		0		*
