@@ -4,7 +4,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-ArvoreVP::ArvoreVP()
+//CONSTRUTOR, INICIALIZA A ARVORE SEM NADA
+ArvoreVP::ArvoreVP() 
 {
     this->raiz = NULL;
     comparacoesIns=0;
@@ -18,10 +19,11 @@ ArvoreVP::~ArvoreVP()
 }
 
 
+///FUNCAO AUXILIAR PARA COLOCAR A ARVORE EM ORDEM
+///ESSA FUNCAO 1o VERIFICA SE A ARVORE NAO ESTA VAZIA
+///E IMPRIME DA ESQUERDA PARA A DIREITA A ARVORE ATE CHEGAR A RAIZ
 void ArvoreVP::auxEmOrdem(NoVP *raiz)
 {
-    //int userId1 = raiz->getUserId();
-    //int movieId1 = raiz->getMovieId();
     comparacoesIns++;
     if(raiz == NULL)
     {
@@ -32,6 +34,12 @@ void ArvoreVP::auxEmOrdem(NoVP *raiz)
     auxEmOrdem(raiz->direita);
 }
 
+
+///AVP INSERIR, Ã‰ A FUNCAO QUE INSERE DE FATO UM NOVO NO NA ARVORE, ASSIM COMO EM OUTRAS FUNCOES 
+///PRIMEIRO Ã‰ VERIFICADO SE A ARVORE NAO ESTA VAZIA
+///DEPOIS Ã‰ DEFINIDO AONDE O NOVO NÃ“ SERÃ INSERIDO USANDO COMO VALOR O ID DO JOGO 'GAMEID' Ã‰ COMPARADO O ID 
+///QUE JA ESTA NA ARVORE COM O QUE SE DESEJA INSERIR, SENDO QUE OS MENORES ID'S VÃƒO PARA A ESQUERDA E OS MAIORES PARA A DIREITA
+///A FUNCAO Ã‰ UTILIZADA DE MANEIRA RECURSIVA ATÃ‰ O NÃ“ SER UNSERIDO
 NoVP* ArvoreVP::AVPInserir(NoVP *noRaiz, NoVP *pt)
 {
     comparacoesIns++;
@@ -39,26 +47,27 @@ NoVP* ArvoreVP::AVPInserir(NoVP *noRaiz, NoVP *pt)
     {
         return pt;
     }
-    string user1 = noRaiz->getUser();
-    int gameId1 = noRaiz->getGameId();
+    string user1 = noRaiz->getUser(); 
+    int gameId1 = noRaiz->getGameId(); 
     string user2 = noRaiz->getUser();
-    int gameId2 = noRaiz->getGameId();
+    int gameId2 = noRaiz->getGameId(); 
     comparacoesIns++;
-    if(pt->getGameId()<noRaiz->getGameId())
+    if(pt->getGameId()<noRaiz->getGameId()) ///ESQUERDA
     {
         noRaiz->esquerda=AVPInserir(noRaiz->esquerda, pt);
         noRaiz->esquerda->pai=noRaiz;
     }
 
-    else if(pt->getGameId() > noRaiz->getGameId())
+    else if(pt->getGameId() > noRaiz->getGameId()) ///DIREITA
     {
         comparacoesIns++;
         noRaiz->direita = AVPInserir(noRaiz->direita, pt);
         noRaiz->direita->pai=noRaiz;
     }
-    return noRaiz;
+    return noRaiz; ///ENCONTROU O LOCAL A SER INSERIDO 
 }
 
+///FUNCAO AUXILIAR QUE IMPRIME A ARVORE POR NIVEL 
 void ArvoreVP::auxNivelOrdem(NoVP *raiz)
 {
     comparacoesIns++;
@@ -87,6 +96,9 @@ void ArvoreVP::auxNivelOrdem(NoVP *raiz)
     }
 }
 
+
+/// FUNCAO QUE REALIZA A ROTACAO A ESQUERDA QUANDO NECESSARIO
+/// SAO VERIFICADAS AS CONDICOES PARA SE OCORRER UMA ROTACAO A DIREITA
 void ArvoreVP::rotacionaEsquerda(NoVP *&raiz,NoVP *&pt )
 {
     trocasIns++;
@@ -95,7 +107,6 @@ void ArvoreVP::rotacionaEsquerda(NoVP *&raiz,NoVP *&pt )
     comparacoesIns++;
     if(pt->direita!=NULL)
     {
-
         pt->direita->pai = pt;
     }
     ptDireita->pai = pt->pai;
@@ -111,7 +122,6 @@ void ArvoreVP::rotacionaEsquerda(NoVP *&raiz,NoVP *&pt )
         comparacoesIns++;
         pt->pai->esquerda= ptDireita;
 
-
     }
 
     else
@@ -125,6 +135,8 @@ void ArvoreVP::rotacionaEsquerda(NoVP *&raiz,NoVP *&pt )
 
 }
 
+
+///FUNCAO QUE REALIZA A ROTACAO A DIREITA QUANDO NECESSARIO
 void ArvoreVP::rotacionaDireita(NoVP *&raiz,NoVP *&pt )
 {
     trocasIns++;
@@ -162,6 +174,8 @@ void ArvoreVP::rotacionaDireita(NoVP *&raiz,NoVP *&pt )
 
 }
 
+
+///FUNCAO QUE VERIFICA VIOLACOES E AS CORRIGE REALIZANDO ROTACOES
 void ArvoreVP::correcao(NoVP *&raiz,NoVP *&pt)
 {
     NoVP *paiPt=NULL;
@@ -172,14 +186,14 @@ void ArvoreVP::correcao(NoVP *&raiz,NoVP *&pt)
         paiPt=pt->pai;
         avoPt=pt->pai->pai;
         /**
-         Caso 1 (pai de pt é filho esquerdo do avo)
+         Caso 1 (pai de pt Ã© filho esquerdo do avo)
          */
          comparacoesIns++;
         if(paiPt==avoPt->esquerda)
         {
             NoVP *tioPt=avoPt->direita;
             /**
-             Caso 1.1 (tio do pt tambem é vermelho, é só recolorir)
+             Caso 1.1 (tio do pt tambem Ã© vermelho, Ã© sÃ³ recolorir)
              */
              comparacoesIns++;
             if((tioPt!=NULL)&&(tioPt->cor==VERMELHO))
@@ -194,7 +208,7 @@ void ArvoreVP::correcao(NoVP *&raiz,NoVP *&pt)
             {
                 comparacoesIns++;
                 /**
-                Caso 1.2 (pt é filho direito do pai, é só fazer a rotação esquerda)
+                Caso 1.2 (pt Ã© filho direito do pai, Ã© sÃ³ fazer a rotaÃ§Ã£o esquerda LR)
                 */
                 if(pt == paiPt->direita)
                 {
@@ -203,7 +217,7 @@ void ArvoreVP::correcao(NoVP *&raiz,NoVP *&pt)
                     paiPt=pt->pai;
                 }
                 /**
-                Caso 1.3 (pt é filho esquerdo do pai, é só fazer a rotação direita)
+                Caso 1.3 (pt Ã© filho esquerdo do pai, Ã© sÃ³ fazer a rotaÃ§Ã£o direita RR)
                 */
                 rotacionaDireita(raiz,avoPt);
                 swap(paiPt->cor,avoPt->cor);
@@ -211,7 +225,7 @@ void ArvoreVP::correcao(NoVP *&raiz,NoVP *&pt)
             }
         }
         /**
-         Caso 2 (pai de pt é filho esquerdo do avo)
+         Caso 2 (pai de pt Ã© filho DIREITO do avo)
          */
 
         else
@@ -219,7 +233,7 @@ void ArvoreVP::correcao(NoVP *&raiz,NoVP *&pt)
             comparacoesIns++;
             NoVP *tioPt = avoPt->esquerda;
             /**
-             Caso 2.1 (tio do pt tambem é vermelho, só precisa recolorir)
+             Caso 2.1 (tio do pt tambem Ã© vermelho, sÃ³ precisa recolorir)
              */
              comparacoesIns++;
             if((tioPt!=NULL)&&(tioPt->cor==VERMELHO))
@@ -230,7 +244,7 @@ void ArvoreVP::correcao(NoVP *&raiz,NoVP *&pt)
                 pt=avoPt;
             }
             /**
-             Caso 2.2 (pt é filho esquerdo do pai, so precisar rotacionar direita)
+             Caso 2.2 (pt Ã© filho esquerdo do pai, so precisar rotacionar direita RR )
              */
 
             else
@@ -244,7 +258,7 @@ void ArvoreVP::correcao(NoVP *&raiz,NoVP *&pt)
                     paiPt=pt->pai;
                 }
                 /**
-                 Caso 2.3 (pt é filho direito do pai, so precisar rotacionar esquerda)
+                 Caso 2.3 (pt Ã© filho direito do pai, so precisar rotacionar esquerda LR)
                  */
                 rotacionaEsquerda(raiz,avoPt);
                 swap(paiPt->cor, avoPt->cor);
@@ -255,6 +269,8 @@ void ArvoreVP::correcao(NoVP *&raiz,NoVP *&pt)
     raiz->cor=PRETO;
 }
 
+
+///FUNCAO QUE IRA INSERIR UM REGISTRO UTILIZANDO A FUNCAO AVPINSERIR E DEPOIS VERIRIFICAR SE EXISTE ALGUMA VIOLACAO
 void ArvoreVP::Inserir(registro &registro)
 {
     NoVP *pt = new NoVP(&registro);
@@ -263,15 +279,20 @@ void ArvoreVP::Inserir(registro &registro)
     correcao(raiz, pt);
 }
 
+///FUNCAO QUE IMPRIME A ARVORE EM ORDEM DE REGISTROS
 void ArvoreVP::emOrdem()
 {
     auxEmOrdem(this->raiz);
 }
 
+///FUCNAO QUE IMPRIME A ARVORE POR NIVEL DE REGISTROS
 void ArvoreVP::nivelOrdem()
 {
     auxNivelOrdem(this->raiz);
 }
+
+///FUNCAO QUE REALIZA A BUSCA POR UM NO NA ARVORE
+///UTILIZA DA FUNCAO AUXBUSCANO
 void ArvoreVP::bucaNo(int id, string user)
 {
     registro *reg = new registro();
@@ -281,6 +302,7 @@ void ArvoreVP::bucaNo(int id, string user)
     auxBuscaNo(noRaiz, reg);
 }
 
+/// Ã‰ A FUNCAO QUE REALMENTE BUSCA O NO NA ARVORE, VAI PERCORRENDO A ARVORE EM BUSCA DO NO, SE RETORNAR NULL O NO NAO EXISTE
 NoVP* ArvoreVP::auxBuscaNo(NoVP *raiz, registro *reg)
 {
     comparacoesBusca++;
@@ -296,16 +318,19 @@ NoVP* ArvoreVP::auxBuscaNo(NoVP *raiz, registro *reg)
     return auxBuscaNo(raiz->esquerda, reg);
 }
 
+///FUNCAO QUE RETORNA O CONTADOR DE TROCAS 
 int ArvoreVP::getTrocasIns()
 {
     return trocasIns;
 }
 
+///FUNCAO QUE RETORNA O CONTADOR DE COMPARACOES NA INSERCAO
 int ArvoreVP::getComparacoesIns()
 {
     return comparacoesIns;
 }
 
+///FUNCAO QUE RETORNA O CONTADOR DE COMPARACOES NA BUSCA
 int ArvoreVP::getComparacoesBusca(){
     return comparacoesBusca;
 }
