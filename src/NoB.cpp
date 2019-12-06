@@ -56,7 +56,10 @@ bool NoB::ehFolha(){
 }
 
 NoB* NoB::getFilho(int i){
-    return this->filhos[i];
+    if(i<2*d && i>=0)
+    	return this->filhos[i];
+    else
+	cout<<"posicao que deseja inserir nao existe"<<endl;
 }
 
 NoB** NoB::getFilhos(){
